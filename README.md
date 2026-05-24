@@ -142,7 +142,7 @@ This is an academic project. If you are a classmate or instructor and want to co
 ## Authors
 
 - **Aníbal Siqueira** - *student* - anisiq2008@proton.me
-- **Isabela** - *student* - [Email]
+- **Isabela Oliveira** - *student* - isabelaoliveiramelo2009@gmail.com
 - **Daniel** - *student* -[Email]
 - **Hagar** - *Teacher* - [Email]
 
