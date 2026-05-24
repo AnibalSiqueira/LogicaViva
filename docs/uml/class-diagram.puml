@@ -1,0 +1,89 @@
+plantuml@startuml LogicaViva_Classes
+
+skinparam ClassBorderColor #888780
+skinparam ClassBackgroundColor #F9F8F4
+skinparam ArrowColor #888780
+
+abstract class User {
+  - id: Long
+  - name: String
+  - email: String
+  - passwordHash: String
+  + login(): void
+  + logout(): void
+}
+
+class Student {
+  - enrollmentId: String
+  + submitSolution(ex: Exercise): Submission
+  + viewResult(r: ExecutionResult): void
+}
+
+class Teacher {
+  - employeeId: String
+  + createExercise(): Exercise
+  + assignExercise(s: Student): void
+  + giveFeedback(sub: Submission, text: String): void
+}
+
+class Exercise {
+  - id: Long
+  - title: String
+  - description: String
+  - deadline: LocalDate
+  + getDetails(): String
+}
+
+class Submission {
+  - id: Long
+  - submittedAt: LocalDateTime
+  - feedback: String
+  + getContent(): String
+  + setFeedback(text: String): void
+}
+
+class PseudocodeEditor {
+  - content: String
+  - syntaxHighlight: boolean
+  + getContent(): String
+  + validate(): boolean
+  + clear(): void
+}
+
+class PseudocodeCompiler {
+  - targetArch: String
+  + compile(src: String): ExecutionResult
+  + execute(binary: byte[]): ExecutionResult
+}
+
+class CodeConverter {
+  - targetLanguage: String
+  + convert(src: String): String
+  + getSupportedLanguages(): List<String>
+}
+
+class ExecutionResult {
+  - stdout: String
+  - stderr: String
+  - exitCode: int
+  - elapsedMs: long
+  + isSuccess(): boolean
+  + getSummary(): String
+}
+
+User <|-- Student
+User <|-- Teacher
+
+Teacher "1" --> "1..*" Exercise : creates
+
+Student "1" --> "0..*" Submission : submits
+Submission "0..*" --> "1" Exercise : for
+
+Submission *-- PseudocodeEditor : contains
+
+PseudocodeCompiler ..> PseudocodeEditor : uses content of
+CodeConverter       ..> PseudocodeEditor : uses content of
+
+PseudocodeCompiler --> ExecutionResult : produces
+
+@enduml
