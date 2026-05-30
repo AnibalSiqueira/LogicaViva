@@ -1,4 +1,4 @@
-plantuml@startuml LogicaViva_Classes
+@startuml LogicaViva_Classes
 
 skinparam ClassBorderColor #888780
 skinparam ClassBackgroundColor #F9F8F4
@@ -9,8 +9,7 @@ abstract class User {
   - name: String
   - email: String
   - passwordHash: String
-  + login(): void
-  + logout(): void
+  + checkPassword(): boolean
 }
 
 class Student {
@@ -24,6 +23,19 @@ class Teacher {
   + createExercise(): Exercise
   + assignExercise(s: Student): void
   + giveFeedback(sub: Submission, text: String): void
+}
+
+class AuthService {
+  + authenticate(email: String, password: String): User
+}
+
+class AuthServlet {
+  + doPost(req, res): void
+  + doGet(req, res): void
+}
+
+class AuthFilter {
+  + doFilter(req, res, chain): void
 }
 
 class Exercise {
@@ -85,5 +97,9 @@ PseudocodeCompiler ..> PseudocodeEditor : uses content of
 CodeConverter       ..> PseudocodeEditor : uses content of
 
 PseudocodeCompiler --> ExecutionResult : produces
+
+AuthServlet --> AuthService : calls
+AuthService --> User : verifies
+AuthFilter ..> AuthServlet : redirects to
 
 @enduml
