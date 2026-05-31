@@ -50,10 +50,10 @@ public class User {
    //Checks the passwordHash for auth
    public boolean checkPasswordHash(String passwdHash) {
       if(passwdHash.equals(this.passwdHash)) {
-         System.out.printf("Sucessfull Login");
+         System.out.println("Successful Login");
          return true;
       } else {
-         System.out.println("Wrongfull login");
+         System.out.println("Wrongful login");
          return false;
       }
    }
