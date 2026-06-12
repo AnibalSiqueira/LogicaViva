@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
         <!-- Source: https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
         <dependency> <!-- Password encryption dependency -->
             <groupId>org.mindrot</groupId>
@@ -27,6 +33,7 @@
         </dependency>
 
         <!-- Servlet API — provided means GlassFish already has it at runtime -->
+        <!-- Source: https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -34,6 +41,76 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- JSTL is the standard library for JSP usage -->
+        <!-- Source: https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.2</version>
+            <scope>compile</scope> <!-- Defines it to run only during compilation as it's unnecessary at runtime -->
+        </dependency>
+
     </dependencies>
+
+    <!-- commands which will act during the build execution -->
+    <build>
+
+        <finalName>logicaviva</finalName>
+
+        <plugins>
+            <!-- configuration for the glassfish deployment, will be deprecated at the final build -->
+            <!-- only use during development -->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>1.10.13</version>
+                <configuration>
+                    <container>
+                        <containerId>glassfish7x</containerId>
+                        <type>remote</type>
+                    </container>
+                    <configuration>
+                        <type>runtime</type>
+                        <properties>
+                            <cargo.hostname>localhost</cargo.hostname>
+                            <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
+                            <!--                            <glassfish.autodeploy>/opt/glassfish/glassfish/domains/domain1/autodeploy</glassfish.autodeploy>-->
+                        </properties>
+                    </configuration>
+                    <deployables>
+                        <deployable>
+                            <type>war</type>
+                            <location>${project.build.directory}/${project.artifactId}.war</location>
+                        </deployable>
+                    </deployables>
+                </configuration>
+            </plugin>
+
+            <!-- Same as the above -->
+            <!-- mostly used by Anibal due to his machine -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>run</goal></goals>
+                        <configuration>
+                            <target>
+                                <exec executable="cp">
+                                    <arg value="${project.build.directory}/${project.build.finalName}.war"/>
+                                    <arg value="/opt/glassfish/glassfish/domains/domain1/autodeploy/"/>
+                                </exec>
+                                <echo message="Deployed! http://localhost:8080/${project.build.finalName}"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+    </build>
 
 </project>

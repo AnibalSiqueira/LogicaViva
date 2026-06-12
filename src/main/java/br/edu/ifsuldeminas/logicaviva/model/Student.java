@@ -1,5 +1,10 @@
 package br.edu.ifsuldeminas.logicaviva.model;
 
+/**
+ *
+ *
+ * @author Anibal Siqueira
+ */
 public class Student {
 
     private String enrollmentId;
@@ -18,6 +23,8 @@ public class Student {
         this.enrollmentId = enrollmentId;
     }
 
-    public Submission submitSolution() {}
+//    public Submission submitSolution() {
+//
+//    }
 
 }

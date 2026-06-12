@@ -2,14 +2,24 @@ package br.edu.ifsuldeminas.logicaviva.model;
 
 import java.time.LocalDateTime;
 
+/**
+ *
+ * @author Isabela Melo
+ */
 public class Submission {
-
+    //Attributes
     private Long submissionId;
     private LocalDateTime submittedAt;
     private String feedback;
+    private String content;
 
     //Constructor
-    public Submission() {}
+    public Submission(Long id, String content) {
+        this.submissionId=id;
+        this.content=content;
+        this.submittedAt= LocalDateTime.now();
+        this.feedback="";
+    }
 
     //Getters
     public Long getSubmissionId() {
@@ -20,6 +30,9 @@ public class Submission {
     }
     public String getFeedback() {
         return feedback;
+    }
+    public String getContent() {
+        return content;
     }
 
     //Setters
@@ -32,7 +45,8 @@ public class Submission {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
-
-    //Methods
+    public void setContent(String content) {
+        this.content = content;
+    }
 
 }

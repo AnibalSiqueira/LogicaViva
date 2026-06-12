@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!--<%@ include file="header.jsp" %>-->
-<!DOCTYPE html>
-<html lang="pt-br">
+<DOCTYPE html>
+<html>
     <head>
         <!-- Metadata -->
         <meta charset="UTF-8" />
@@ -9,6 +8,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/login.css" />
 
         <!-- JS -->
         <%-- 
@@ -22,7 +22,21 @@
 
         <!-- TODO: Add favicon -->
     </head>
+    <header>
+    </header>
     <body>
+        <div>
+            <form action="submit" method="post" name="login-form">
+
+                <label for="email">E-Mail:</label>
+                <input type="text" id="email" name="email" value="userEmail" />
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="passwd" value="userPassword" />
+
+                <input type="submit" id="submit" value="enviar" /> 
+            </form>
+        </div>
     </body>
     <footer>
     </footer>

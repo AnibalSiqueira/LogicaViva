@@ -1,5 +1,12 @@
 package br.edu.ifsuldeminas.logicaviva.model;
 
+import org.mindrot.jbcrypt.BCrypt;
+
+/**
+ *
+ *
+ * @author Anibal Siqueira
+ */
 public class User {
 
    //Variables
@@ -8,6 +15,8 @@ public class User {
    private String userEmail;
    private String userRole;
    private String passwdHash;
+
+   private Integer SALT_VALUE = 12;
 
    //Enum
    public enum SESSION_ID {
@@ -48,14 +57,12 @@ public class User {
    public void setUserRole(String userRole) {this.userRole = userRole;}
 
    //Checks the passwordHash for auth
-   public boolean checkPasswordHash(String passwdHash) {
-      if(passwdHash.equals(this.passwdHash)) {
-         System.out.println("Successful Login");
-         return true;
-      } else {
-         System.out.println("Wrongful login");
-         return false;
-      }
+   public boolean checkPasswordHash(String plainText) {
+      return BCrypt.checkpw(plainText, passwdHash);
+   }
+
+   public String passwdHasher(String inputString) {
+      return this.passwdHash = BCrypt.hashpw(inputString, BCrypt.gensalt(SALT_VALUE));
    }
 
 }

@@ -143,7 +143,7 @@ This is an academic project. If you are a classmate or instructor and want to co
 
 - **Aníbal Siqueira** - *student* - anisiq2008@proton.me
 - **Isabela Oliveira** - *student* - isabelaoliveiramelo2009@gmail.com
-- **Daniel** - *student* -[Email]
+- **Daniel Henrique** - *student* - TecladoTassinari@gmail.com
 - **Hagar** - *Teacher* - [Email]
 
 Developed as part of the coursework at **IFSULDEMINAS — Campus Machado**.
