@@ -20,8 +20,7 @@ public class TeacherServlet extends HttpServlet{
      * This method Overrides the init() method provided in the
      * HttpServlet class, it starts objects and other resources
      * necessary for the session executed during runtime
-     * <p>
-     * Todo:
+     *
      */
     @Override
     public void init() {

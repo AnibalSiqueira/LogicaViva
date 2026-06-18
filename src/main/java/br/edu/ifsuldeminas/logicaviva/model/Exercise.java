@@ -58,9 +58,14 @@ public class Exercise {
     
     //Method
     public String getDetails(){
-        return "Exercise id: "+id+ ""
-                + "\nTitle: " +title +
-                "\nDescription: "+description+
-                "\nDeadline: "+deadline;
+        return "Exercise id: "
+                + id
+                + "\nTitle: "
+                + title
+                + "\nDescription: "
+                + description
+                + "\nDeadline: "
+                + deadline;
+
     }
 }

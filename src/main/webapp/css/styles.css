@@ -1,0 +1,56 @@
+:root {
+    --primary: rgb(143,113,66);
+    --secundary: rgb(66,143,113);
+    --tertiary: rgb(113,66,143);
+    --white: rgb(228, 255, 254);
+    --gray: rgb(130, 127, 127);
+    --black: rgb(51, 51, 51);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--gray);
+    font-family: 'Jetbrains Mono', Verdana, Arial, sans-serif; 
+}
+
+/* Start UI */
+.left-panel {
+    height: 100vh;
+    width: 13.33vw;
+    background-color: var(--primary);
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Start navbar */
+.navbar-list {
+    list-style-type: none;
+}
+
+.navbar-list li {
+    margin-top: 2rem;
+}
+
+a.navbar-item {
+    padding: 5px;
+    text-decoration: none;
+    font-size: 1.64rem;
+    color: var(--white);
+}
+
+a.navbar-item:hover {
+    border-left: 5px solid var(--white);
+    background-color: var(--gray);
+    color: var(--black);
+}

@@ -7,7 +7,7 @@
     <request-character-encoding>UTF-8</request-character-encoding>
     <response-character-encoding>UTF-8</response-character-encoding>
 
-    <servlet>
+    <!-- <servlet>
         <servlet-name>AuthServlet</servlet-name>
         <servlet-class>br.edu.ifsuldeminas.logicaviva.servlet.AuthServlet</servlet-class>
     </servlet>
@@ -19,5 +19,5 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-
+ -->
 </web-app>
